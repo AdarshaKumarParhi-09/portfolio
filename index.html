@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(to right, #e3f2fd, #bbdefb);
+    color: #1a1a1a;
+    text-align: center;
+    animation: fadeIn 1.5s ease-in;
+  }
+
+  header {
+    padding: 40px 20px 20px;
+    background: #ffffffcc;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .profile-photo {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+    animation: pulse 3s infinite;
+    object-fit: cover;
+  }
+
+  h1 {
+    font-size: 36px;
+    margin-top: 20px;
+    color: #0d47a1;
+  }
+
+  h3 {
+    font-weight: 400;
+    color: #555;
+    margin-top: 5px;
+  }
+
+  .buttons {
+    margin-top: 25px;
+  }
+
+  .buttons a {
+    text-decoration: none;
+    margin: 10px;
+    padding: 12px 25px;
+    color: white;
+    font-weight: 600;
+    background: linear-gradient(145deg, #1976d2, #0d47a1);
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(25, 118, 210, 0.4);
+  }
+
+  .buttons a:hover {
+    transform: translateY(-3px) scale(1.03);
+    background: #0d47a1;
+  }
+
+  section {
+    padding: 60px 20px;
+  }
+
+  section h2 {
+    font-size: 32px;
+    color: #0d47a1;
+    margin-bottom: 25px;
+    position: relative;
+  }
+
+  .about-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    text-align: left;
+  }
+
+  .about-box {
+    background: linear-gradient(135deg, #2196f3, #7e57c2);
+    color: #fff;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    animation: floatBox 3s ease-in-out infinite alternate;
+  }
+
+  .about-box h4 {
+    margin: 0 0 10px;
+    font-size: 22px;
+  }
+
+  .skill-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .skill {
+    width: 80px;
+    height: 80px;
+    animation: rotate 4s linear infinite;
+  }
+
+  .skill img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #f8f8f8;
+    padding: 8px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  }
+
+  .projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+  }
+
+  .project {
+    background: #fdfdfd;
+    width: 300px;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    animation: fadeInUpProject 0.8s forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .project:nth-child(2) { animation-delay: 0.4s; }
+  .project:nth-child(3) { animation-delay: 0.6s; }
+
+  .project:hover {
+    transform: translateY(-8px);
+  }
+
+  .project video {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+
+  .project-description {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+
+  .project a {
+    display: inline-block;
+    padding: 10px 16px;
+    background: #1976d2;
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+
+  .project a:hover {
+    background: #0d47a1;
+  }
+
+  .certification {
+    background: #f0f4ff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 300px;
+    margin: 20px auto;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .certification:hover {
+    box-shadow: 0 8px 20px rgba(25, 118, 210, 0.3);
+  }
+
+  .certification img {
+    width: 100%;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+  }
+
+  .certification img:hover {
+    transform: scale(1.05);
+  }
+
+  footer {
+    background: #e3f2fd;
+    padding: 20px;
+    font-size: 14px;
+    color: #333;
+    animation: fadeInFooter 1s forwards;
+    animation-delay: 1.5s;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  @keyframes floatBox {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-6px); }
+  }
+
+  @keyframes rotate {
+    from { transform: rotateY(0); }
+    to { transform: rotateY(360deg); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInUpProject {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInFooter {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .buttons a {
+      display: block;
+      margin: 10px auto;
+      width: 80%;
+    }
+
+    .skill-grid,
+    .projects-container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .about-container {
+      grid-template-columns: 1fr;
+    }
+
+    .certification {
+      width: 90%;
+    }
+  }
+</style>
+
+</head>
+<body>
+
+  <header>
+    <img src="image.jpg" alt="Profile Photo" class="profile-photo" />
+    <h1>Adarsha Kumar parhi</h1>
+    <h3>JAVA FULL STACK DEVELOPER</h3>
+
+    <div class="buttons">
+      <a href="cv/ADARSHA KUMAR PARHI (220301120024@cutm.ac.in).pdf" download>Download CV</a>
+      <a href="https://adarshaparhi123@gmail.com">Email Me</a>
+      <a href="https://www.linkedin.com/in/adarsha-kumar-parhi-865308265/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/AdarshaKumarParhi-09" target="_blank">GitHub</a>
+    </div>
+  </header>
+
+  <!-- New About Section -->
+  <section class="about">
+    <h2>About Me</h2>
+    <div class="about-container">
+      <div class="about-box">
+        <h4>Bio</h4>
+        <p>Passionate and creative web developer with a love for front-end design, user experience, and building intuitive web applications.</p>
+      </div>
+      <div class="about-box">
+        <h4>Qualification</h4>
+        <p>Bachelor of Technology in Computer Science</p>
+      </div>
+      
+      <div class="about-box">
+        <h4>Skills , Languages  , Frameworks</h4>
+        <p>HTML, CSS, JavaScript, React, Angular, springboot , MySQL , Java</p>
+      </div>
+      <div class="about-box">
+        <h4>Cgpa</h4>
+        <p>7.5 / 10</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="skills">
+  <h2>Skills</h2>
+  <div class="skill-grid">
+    <div class="skill">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" />
+    </div>
+    <div class="skill">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" />
+    </div>
+    <div class="skill">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
+    </div>
+    <div class="skill">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" />
+    </div>
+    <div class="skill">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular" />
+    </div>
+    <div class="skill">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNou7-DlVcN5nOVq73_RDi6OAYZAzOknfzQw&s" alt="springboot" />
+    </div>
+     <div class="skill">
+      <img src="https://w7.pngwing.com/pngs/356/251/png-transparent-java-development-kit-java-architecture-for-xml-binding-java-runtime-environment-javafx-others-miscellaneous-text-logo.png" alt="java" />
+    </div>
+     <div class="skill">
+      <img src="https://cdn4.iconfinder.com/data/icons/logos-3/181/MySQL-512.png" alt="mysql" />
+    </div>
+  </div>
+</section>
+
+
+  <!-- Projects Section -->
+   <section class="projects">
+    <h2>Project Videos</h2>
+    <div class="projects-container">
+      <div class="project">
+        <video controls>
+          <source src="project1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="project-description">
+          <strong>Attendance Management System</strong><br />
+          A Java, JSP, Servlet-based web app for faculty to mark and students to view attendance.
+        </div>
+        <a href="https://liveproject1.example.com" target="_blank">Live Project</a>
+      </div>
+
+      <div class="project">
+        <video controls>
+          <source src="project1/Majorproject.video.webm" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="project-description">
+          <strong>Fundraising Platform</strong><br />
+          Java  full stack app for creating and donating to campaigns using payment GatewayS.
+        </div>
+        <a href="https://liveproject2.example.com" target="_blank">Live Project</a>
+      </div>
+    </div>
+  </section>
+  <!-- Certifications Section -->
+  <section class="certifications">
+    <h2>Internship & Certifications</h2>
+
+    <div class="certification">
+      <h3>Full Stack Web Development</h3>
+      <p>Issued by Infotact Solution Bangalore in 2025</p>
+      <a href="certificates/fullstack.pdf" class="download-link" download>Download Certificate</a>
+      <a href="certificates/fullstack.png" target="_blank" rel="noopener noreferrer">
+        <img src="certificates/fullstack.png" alt="Full Stack Web Development Certificate" />
+      </a>
+    </div>
+
+  
+   
+  </section>
+
+  <footer>
+    &copy; 2025 || Adarsha Kumar Parhi || All rights reserved.
+  </footer>
+
+</body>
+</html>
